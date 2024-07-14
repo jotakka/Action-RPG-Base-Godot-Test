@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfrh4k4jtw8vb"]
+
+[ext_resource type="Texture2D" uid="uid://7nc0kyvyh7s7" path="res://Scenes/Art/Sprite.png" id="1_0275t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vd0y3"]
+radius = 3.24722
+height = 11.2618
+
+[node name="WeaponAxe" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("1_0275t")
+offset = Vector2(0, -6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vd0y3")

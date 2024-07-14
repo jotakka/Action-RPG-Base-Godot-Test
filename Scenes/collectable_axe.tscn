@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://bb4be0use6hmj"]
+
+[ext_resource type="PackedScene" uid="uid://cxrx10p5k0pfu" path="res://Scenes/collectable_base.tscn" id="1_qj1u8"]
+[ext_resource type="Script" path="res://Scenes/CollectableAxe.cs" id="2_elpph"]
+[ext_resource type="Texture2D" uid="uid://7nc0kyvyh7s7" path="res://Scenes/Art/Sprite.png" id="2_kdatx"]
+[ext_resource type="Resource" uid="uid://cukmblw7wbwbg" path="res://Inventory/Items/axe.tres" id="3_7cwbq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jowp2"]
+resource_local_to_scene = true
+size = Vector2(10.7366, 12.8603)
+
+[sub_resource type="Animation" id="Animation_b41ip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_d7h66"]
+resource_name = "spin"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1.86607),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xghsw"]
+_data = {
+"RESET": SubResource("Animation_b41ip"),
+"spin": SubResource("Animation_d7h66")
+}
+
+[node name="CollectableAxe" instance=ExtResource("1_qj1u8")]
+script = ExtResource("2_elpph")
+ItemResource = ExtResource("3_7cwbq")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0.113152, 0.0998039)
+shape = SubResource("RectangleShape2D_jowp2")
+
+[node name="Sprite2D" parent="." index="1"]
+rotation = 6.28319
+texture = ExtResource("2_kdatx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_xghsw")
+}
