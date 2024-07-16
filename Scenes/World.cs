@@ -3,34 +3,30 @@ using Godot;
 public partial class World : Node2D
 {
 	[Export]
-	public string PlayerNodePath = "Player";
+	public PlayerNode? PlayerNode;
 	[Export]
-	public string HeartsContainerNodePath = "CanvasLayer/HeartsContainer";
+	public InventoryGui? InventoryGui;
 	[Export]
-	public string InventoryGuiNodePath = "CanvasLayer/InventoryGui";
-
-
-	private HeartsContainer _heartsContainer;
-	private InventoryGui _inventoryGui;
-	private PlayerNode _player;
+	public HeartsContainer? HeartsContainer;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_heartsContainer = GetNode<HeartsContainer>(HeartsContainerNodePath);
-		_player = GetNode<PlayerNode>(PlayerNodePath);
-		_heartsContainer.SetMaxHearts(_player.MaxHealth);
-		_inventoryGui = GetNode<InventoryGui>(InventoryGuiNodePath);
+
+		if (HeartsContainer is not null && PlayerNode is not null)
+		{
+			HeartsContainer.SetMaxHearts(
+				PlayerNode.HealthComponent?.MaxHealth ?? 0
+				);
+			PlayerNode.HealthComponent!.HealthChangedSignal += HeartsContainer.UpdateHearts;
+		}
 
 
-		_inventoryGui.InventoryOpened += OnInventoryOpened;
-		_inventoryGui.InventoryClosed += OnInventoryClosed;
-		_player.HealthChanged += _heartsContainer.UpdateHearts;
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+		if (InventoryGui is not null)
+		{
+			InventoryGui.InventoryOpened += OnInventoryOpened;
+			InventoryGui.InventoryClosed += OnInventoryClosed;
+		}
 	}
 
 	private void OnInventoryOpened()

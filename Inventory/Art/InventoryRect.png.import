@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4hpl0ufla7nj"
-path="res://.godot/imported/LifePot.png-9811d8d4fb831e37dc8d1ab9f16dda59.ctex"
+uid="uid://bc6aw2w7h0eug"
+path="res://.godot/imported/InventoryRect.png-713b4722338ae1fa5260c849767347a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Art/LifePot.png"
-dest_files=["res://.godot/imported/LifePot.png-9811d8d4fb831e37dc8d1ab9f16dda59.ctex"]
+source_file="res://Inventory/Art/InventoryRect.png"
+dest_files=["res://.godot/imported/InventoryRect.png-713b4722338ae1fa5260c849767347a2.ctex"]
 
 [params]
 

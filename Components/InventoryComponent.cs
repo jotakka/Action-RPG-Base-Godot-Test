@@ -9,8 +9,4 @@ public partial class InventoryComponent : Node
 {
     [Export]
     public InventoryItemResource? ItemResource { get; set; }
-
-
-
-    //EmitSignal(nameof(SlotItemAdded));
 }

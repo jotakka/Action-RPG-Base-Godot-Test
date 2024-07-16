@@ -1,13 +1,13 @@
 [gd_scene load_steps=19 format=3 uid="uid://0r5f3ohsukop"]
 
-[ext_resource type="PackedScene" uid="uid://fib0oiaxkb6j" path="res://Scenes/hearts_container.tscn" id="1_22axb"]
+[ext_resource type="PackedScene" uid="uid://dcdg2l5gn2j3d" path="res://GUI/hearts_container.tscn" id="1_22axb"]
 [ext_resource type="Script" path="res://Scenes/World.cs" id="1_ako2l"]
 [ext_resource type="PackedScene" uid="uid://cle56lmpiu0ud" path="res://Player/player.tscn" id="1_nbp6y"]
 [ext_resource type="Script" path="res://Scenes/CanvasLayer.cs" id="2_qqpkl"]
 [ext_resource type="Texture2D" uid="uid://xd4a0we263tu" path="res://Scenes/Art/TilesetFloor.png" id="2_uwibc"]
 [ext_resource type="Texture2D" uid="uid://dihaxnrh3702e" path="res://Scenes/Art/AnimatedFlower.png" id="3_btxti"]
 [ext_resource type="Texture2D" uid="uid://c0yoymqpuc4y5" path="res://Scenes/Art/TilesetNature.png" id="3_dyuri"]
-[ext_resource type="PackedScene" uid="uid://cwf8fo1pimqgh" path="res://Scenes/inventory_gui.tscn" id="4_ach3u"]
+[ext_resource type="PackedScene" uid="uid://cwf8fo1pimqgh" path="res://Inventory/inventory_gui.tscn" id="4_ach3u"]
 [ext_resource type="Script" path="res://Scenes/FollowCam.cs" id="5_isf55"]
 [ext_resource type="PackedScene" uid="uid://dinwmbcvhl610" path="res://Enemies/octopus.tscn" id="6_brwx3"]
 [ext_resource type="PackedScene" uid="uid://coldajp7gji0u" path="res://Collectables/collectable_sword.tscn" id="8_qy75r"]
@@ -3205,12 +3205,13 @@ texture = ExtResource("3_dyuri")
 11:20/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 11:20/0/physics_layer_0/angular_velocity = 0.0
 0:0/size_in_atlas = Vector2i(2, 2)
+0:0/next_alternative_id = 2
 0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 7)
-0:0/0/y_sort_origin = 7
+0:0/0/texture_origin = Vector2i(0, 2)
+0:0/0/y_sort_origin = 4
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.125, 3.75, -12.7279, 6.18718, -8.25, 9, 10, 8, 13.2583, 6.89429, 12.3744, 3.53553)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13, 8.25, -12.625, 12.625, -9.875, 13.375, 10.5, 13, 13.5, 12.375, 12.25, 8.375, -0.125, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_udidg"]
 texture = ExtResource("3_btxti")
@@ -3243,9 +3244,12 @@ sources/1 = SubResource("TileSetAtlasSource_3clbu")
 sources/2 = SubResource("TileSetAtlasSource_udidg")
 sources/3 = SubResource("TileSetScenesCollectionSource_biyod")
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" node_paths=PackedStringArray("PlayerNode", "InventoryGui", "HeartsContainer")]
 y_sort_enabled = true
 script = ExtResource("1_ako2l")
+PlayerNode = NodePath("Player")
+InventoryGui = NodePath("CanvasLayer/InventoryGui")
+HeartsContainer = NodePath("CanvasLayer/HeartsContainer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -3287,7 +3291,7 @@ layer_3/tile_data = PackedInt32Array(131092, 3, 65536, 196628, 3, 65536, 262164,
 [node name="Player" parent="." instance=ExtResource("1_nbp6y")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(42, 44)
+position = Vector2(50, 66)
 
 [node name="FollowCam" type="Camera2D" parent="Player" node_paths=PackedStringArray("Tilemap")]
 position = Vector2(-42, -44)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcdg2l5gn2j3d"]
+
+[ext_resource type="Script" path="res://GUI/HeartsContainer.cs" id="1_ewncg"]
+[ext_resource type="PackedScene" uid="uid://bovywy7tpsca1" path="res://GUI/heart_gui.tscn" id="2_h3ukc"]
+
+[node name="HeartsContainer" type="HBoxContainer"]
+layout_direction = 2
+theme_override_constants/separation = 3
+script = ExtResource("1_ewncg")
+HeartGuiPackedScene = ExtResource("2_h3ukc")

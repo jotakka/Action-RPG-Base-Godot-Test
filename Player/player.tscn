@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cjijst1m3t12u" path="res://Components/attack_component.tscn" id="6_pd1cp"]
 [ext_resource type="PackedScene" uid="uid://bas711ypnodf4" path="res://Weapons/weapon_sword.tscn" id="7_dbt8e"]
 [ext_resource type="PackedScene" uid="uid://djjkrcnkuummg" path="res://Components/hurt_box_component.tscn" id="8_2e0ut"]
-[ext_resource type="PackedScene" uid="uid://dveb3esbcn775" path="res://Components/hit_box_component.tscn" id="9_naeo5"]
 [ext_resource type="PackedScene" uid="uid://ctjdshnlpan5s" path="res://Components/collecting_component.tscn" id="10_78ytm"]
+[ext_resource type="PackedScene" uid="uid://dyreh6r8tc3jb" path="res://Components/health_component.tscn" id="10_rl20k"]
 
 [sub_resource type="Animation" id="Animation_42wbm"]
 length = 0.001
@@ -454,7 +454,7 @@ height = 14.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7iupk"]
 size = Vector2(14, 4)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerInputProcessor", "WalkAnimationComponent", "AttackComponent", "HurtBoxComponent", "WeaponComponent", "Sprite2D")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerInputProcessor", "WalkAnimationComponent", "AttackComponent", "HurtBoxComponent", "WeaponComponent", "HealthComponent", "Sprite2D")]
 texture_filter = 1
 script = ExtResource("1_q0ydn")
 PlayerInputProcessor = NodePath("PlayerInputProcessor")
@@ -462,7 +462,9 @@ WalkAnimationComponent = NodePath("WalkAnimationComponent")
 AttackComponent = NodePath("AttackComponent")
 HurtBoxComponent = NodePath("HurtBoxComponent")
 WeaponComponent = NodePath("WeaponComponent")
+HealthComponent = NodePath("HealthComponent")
 Sprite2D = NodePath("Sprite2D")
+KnockBackFactor = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -522,12 +524,11 @@ debug_color = Color(0.951464, 0.123553, 0.462957, 0.42)
 
 [node name="HurtTimer" type="Timer" parent="HurtBoxComponent"]
 
-[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("HitBoxShape") instance=ExtResource("9_naeo5")]
-HitBoxShape = NodePath("HitBox")
+[node name="CollectingComponent" parent="." node_paths=PackedStringArray("HurtBoxComponent") instance=ExtResource("10_78ytm")]
+HurtBoxComponent = NodePath("../HurtBoxComponent")
 
-[node name="HitBox" type="CollisionShape2D" parent="HitBoxComponent"]
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_7iupk")
 
-[node name="CollectingComponent" parent="." node_paths=PackedStringArray("HitBoxComponent") instance=ExtResource("10_78ytm")]
-HitBoxComponent = NodePath("../HitBoxComponent")
+[node name="HealthComponent" parent="." instance=ExtResource("10_rl20k")]

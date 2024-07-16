@@ -1,12 +1,12 @@
 using Godot;
+using System;
 
 public partial class HealthComponent : Node
 {
 	[Export]
-	public int MaxHealth = 3;
-
+	public int MaxHealth { get; set; } = 3;
 	[Signal]
-	public delegate void HealthChangedEventHandler(int newHealth);
+	public delegate void HealthChangedSignalEventHandler(int newHealth);
 
 	private int _currentHealth;
 
@@ -15,15 +15,16 @@ public partial class HealthComponent : Node
 		_currentHealth = MaxHealth;
 	}
 
-	public void TakeDamage(int damage)
+	public void TakeDamage(int damage = 1)
 	{
 		_currentHealth -= damage;
-		EmitSignal(nameof(HealthChanged), _currentHealth);
+		_currentHealth = _currentHealth < 0 ? MaxHealth : _currentHealth;
+		EmitSignal(nameof(HealthChangedSignal), _currentHealth);
 	}
 
-	public void Heal(int health)
+	public void Heal(int health = 1)
 	{
-		_currentHealth += health;
-		EmitSignal(nameof(HealthChangedEventHandler), _currentHealth);
+		_currentHealth = Math.Min(MaxHealth, health + _currentHealth);
+		EmitSignal(nameof(HealthChangedSignal), _currentHealth);
 	}
 }

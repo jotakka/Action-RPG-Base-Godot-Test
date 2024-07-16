@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cxrx10p5k0pfu" path="res://Collectables/collectable_base.tscn" id="1_p3asp"]
 [ext_resource type="Resource" uid="uid://cukmblw7wbwbg" path="res://Inventory/Items/axe.tres" id="2_bltmq"]
-[ext_resource type="Texture2D" uid="uid://eumu8esfdoak" path="res://Weapons/Art/Axe.png" id="3_e3jhs"]
+[ext_resource type="Texture2D" uid="uid://10h1cj7i1e0e" path="res://Collectables/Art/Axe.png" id="3_vuqcg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkvll"]
 resource_local_to_scene = true
@@ -15,4 +15,4 @@ ItemResource = ExtResource("2_bltmq")
 shape = SubResource("RectangleShape2D_jkvll")
 
 [node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("3_e3jhs")
+texture = ExtResource("3_vuqcg")

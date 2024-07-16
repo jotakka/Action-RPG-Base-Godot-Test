@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 public partial class CollectingComponent : Node
 {
 	[Export]
-	public HitBoxComponent? HitBoxComponent;
+	public Area2D? HurtBoxComponent;
 
 	public override void _Ready()
 	{
-		if (HitBoxComponent is not null)
+		if (HurtBoxComponent is not null)
 		{
-			HitBoxComponent.AreaEntered += OnHitBoxEnteredAsync;
+			HurtBoxComponent.AreaEntered += OnHitBoxEnteredAsync;
 		}
 	}
 

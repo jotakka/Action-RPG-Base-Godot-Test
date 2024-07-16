@@ -27,6 +27,7 @@ public sealed class PlayerHurtState : PlayerStateBase
         _player.HurtBoxComponent?.HurtAnimation();
         var enemyHitVelocity = _player.HurtBoxComponent?.EnemyHitVelocity ?? Vector2.Zero;
         _player.Velocity = (enemyHitVelocity - _player.Velocity) * _player.KnockBackFactor;
+        _player.HealthComponent?.TakeDamage();
         _player.MoveAndCollide(_player.Velocity);
     }
 }
