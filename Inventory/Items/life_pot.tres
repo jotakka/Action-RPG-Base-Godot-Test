@@ -7,3 +7,4 @@
 script = ExtResource("2_5hsct")
 Name = "LifePot"
 Texture = ExtResource("1_up0bw")
+AnimationOnCollect = "grow_and_decrease"

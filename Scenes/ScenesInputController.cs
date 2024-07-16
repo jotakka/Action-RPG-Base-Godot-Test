@@ -1,10 +1,5 @@
 ﻿using ARPG.Shared;
 using Godot;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ARPG.Scenes
 {
@@ -13,8 +8,8 @@ namespace ARPG.Scenes
         public static Vector2 GetNewMovementDirection()
         {
             Vector2 direction = new();
-            direction.X = Input.GetActionStrength(UserInput.MoveRight) - Input.GetActionStrength(UserInput.MoveLeft);
-            direction.Y = Input.GetActionStrength(UserInput.MoveDown) - Input.GetActionStrength(UserInput.MoveUp);
+            direction.X = Input.GetActionStrength(UserInput.MoveRight.Value) - Input.GetActionStrength(UserInput.MoveLeft.Value);
+            direction.Y = Input.GetActionStrength(UserInput.MoveDown.Value) - Input.GetActionStrength(UserInput.MoveUp.Value);
 
             // If input is digital, normalize it for diagonal movement
             if (Mathf.Abs(direction.X) == 1 && Mathf.Abs(direction.Y) == 1)

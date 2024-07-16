@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctjdshnlpan5s"]
+
+[ext_resource type="Script" path="res://Components/CollectingComponent.cs" id="1_d1ol1"]
+
+[node name="CollectingComponent" type="Node"]
+script = ExtResource("1_d1ol1")

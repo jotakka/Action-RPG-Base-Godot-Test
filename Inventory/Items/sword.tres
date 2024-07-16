@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=3 format=3 uid="uid://o1hwewdgisrf"]
+
+[ext_resource type="Texture2D" uid="uid://xf5q4umhavcq" path="res://Weapons/Art/Sword.png" id="1_cemp0"]
+[ext_resource type="Script" path="res://Inventory/InventoryItemResource.cs" id="2_62woo"]
+
+[resource]
+script = ExtResource("2_62woo")
+Name = "sword"
+Texture = ExtResource("1_cemp0")
+AnimationOnCollect = ""

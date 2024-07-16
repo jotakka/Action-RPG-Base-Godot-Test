@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://0r5f3ohsukop"]
+[gd_scene load_steps=19 format=3 uid="uid://0r5f3ohsukop"]
 
 [ext_resource type="PackedScene" uid="uid://fib0oiaxkb6j" path="res://Scenes/hearts_container.tscn" id="1_22axb"]
 [ext_resource type="Script" path="res://Scenes/World.cs" id="1_ako2l"]
@@ -10,8 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://cwf8fo1pimqgh" path="res://Scenes/inventory_gui.tscn" id="4_ach3u"]
 [ext_resource type="Script" path="res://Scenes/FollowCam.cs" id="5_isf55"]
 [ext_resource type="PackedScene" uid="uid://dinwmbcvhl610" path="res://Enemies/octopus.tscn" id="6_brwx3"]
-[ext_resource type="PackedScene" uid="uid://cb1uciudw5vao" path="res://Scenes/collectable_health_pot.tscn" id="6_xjuyb"]
-[ext_resource type="PackedScene" uid="uid://bb4be0use6hmj" path="res://Scenes/collectable_axe.tscn" id="7_waaw6"]
+[ext_resource type="PackedScene" uid="uid://coldajp7gji0u" path="res://Collectables/collectable_sword.tscn" id="8_qy75r"]
+[ext_resource type="PackedScene" uid="uid://csaw5drx6ynxw" path="res://Collectables/collectable_health_pot.tscn" id="9_bnwii"]
+[ext_resource type="PackedScene" uid="uid://hw5ij1yel8fd" path="res://Collectables/collectable_axe.tscn" id="10_tmrxp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wl4xb"]
 texture = ExtResource("2_uwibc")
@@ -3224,8 +3225,9 @@ texture = ExtResource("3_btxti")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_biyod"]
 resource_name = "Collectables"
-scenes/1/scene = ExtResource("6_xjuyb")
-scenes/2/scene = ExtResource("7_waaw6")
+scenes/1/scene = ExtResource("8_qy75r")
+scenes/3/scene = ExtResource("9_bnwii")
+scenes/4/scene = ExtResource("10_tmrxp")
 
 [sub_resource type="TileSet" id="TileSet_kuhjo"]
 physics_layer_0/collision_layer = 1
@@ -3260,10 +3262,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.5
-offset_top = -40.0
-offset_right = 64.5
-offset_bottom = 40.0
+offset_left = 144.0
+offset_top = 72.0
+offset_right = 273.0
+offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -3280,7 +3282,7 @@ layer_2/y_sort_enabled = true
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(1048577, 1, 0, 720899, 1, 0, 1310748, 1, 0, 524304, 1, 0, 458785, 1, 0, 983056, 1, 0, 1245192, 1, 0, 262149, 1, 0, 65546, 1, 0, 786460, 1, 0, 131098, 1, 0, 786441, 1, 0, 1376274, 1, 0, 983075, 1, 0, 65570, 1, 0, -65535, 1, 0)
 layer_3/name = "collectables"
-layer_3/tile_data = PackedInt32Array(131092, 3, 65536, 196628, 3, 65536, 262164, 3, 65536, 262165, 3, 65536, 196629, 3, 65536, 131093, 3, 65536, 196619, 3, 65536, 196618, 3, 65536, 196617, 3, 65536, 131081, 3, 65536, 524297, 3, 65536, 524298, 3, 65536, 524299, 3, 65536, 458762, 3, 65536, 589834, 3, 65536, 393217, 3, 131072, 393218, 3, 131072, 458754, 3, 131072, 458753, 3, 131072)
+layer_3/tile_data = PackedInt32Array(131092, 3, 65536, 196628, 3, 65536, 262164, 3, 65536, 262165, 3, 65536, 196629, 3, 65536, 131093, 3, 65536, 196619, 3, 65536, 196618, 3, 65536, 196617, 3, 65536, 131081, 3, 65536, 524297, 3, 65536, 524298, 3, 65536, 524299, 3, 65536, 458762, 3, 65536, 589834, 3, 65536, 524289, 3, 262144, 524290, 3, 262144, 589826, 3, 262144, 589825, 3, 262144, 393219, 3, 196608, 393220, 3, 196608, 327684, 3, 196608, 327683, 3, 196608, 589840, 3, 196608, 524304, 3, 196608, 524303, 3, 196608, 589839, 3, 196608, 589829, 3, 65536, 589830, 3, 65536)
 
 [node name="Player" parent="." instance=ExtResource("1_nbp6y")]
 z_index = 1

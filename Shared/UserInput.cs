@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ARPG.Shared;
+using ARPG.Util;
 
-namespace ARPG.Shared;
-
-public static class UserInput
+public sealed class UserInput : TypedStringBase
 {
-    public const string MoveLeft = "ui_left";
-    public const string MoveRight = "ui_right";
-    public const string MoveUp = "ui_up";
-    public const string MoveDown = "ui_down";
-    public const string Attack = "ui_attack";
-    public const string Sprint = "ui_sprint";
-    public const string ToggleInventory = "toggle_inventory";
+    public static readonly UserInput MoveLeft = new("ui_left");
+    public static readonly UserInput MoveRight = new("ui_right");
+    public static readonly UserInput MoveUp = new("ui_up");
+    public static readonly UserInput MoveDown = new("ui_down");
+    public static readonly UserInput Attack = new("ui_attack");
+    public static readonly UserInput Sprint = new("ui_sprint");
+    public static readonly UserInput ToggleInventory = new("toggle_inventory");
+
+    private UserInput(string name) : base(name)
+    {
+    }
+
 }

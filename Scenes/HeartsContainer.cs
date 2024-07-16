@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class HeartsContainer : HBoxContainer
 {
@@ -16,7 +15,7 @@ public partial class HeartsContainer : HBoxContainer
 	public override void _Process(double delta)
 	{
 	}
-	
+
 	public void SetMaxHearts(int maxHealth)
 	{
 		for (int i = 0; i < maxHealth; i++)
@@ -32,11 +31,11 @@ public partial class HeartsContainer : HBoxContainer
 		GD.PrintS("HeartGuis: " + heartGuis.Count);
 		for (int i = 0; i < currentHealth; i++)
 		{
-			((HeartGui)heartGuis[i]).UpdateHeart(isWhole:true);
+			((HeartGui)heartGuis[i]).UpdateHeart(isWhole: true);
 		}
-		for(int i = currentHealth; i < heartGuis.Count; i++)
+		for (int i = currentHealth; i < heartGuis.Count; i++)
 		{
-			((HeartGui)heartGuis[i]).UpdateHeart(isWhole:false);
+			((HeartGui)heartGuis[i]).UpdateHeart(isWhole: false);
 		}
 	}
 }

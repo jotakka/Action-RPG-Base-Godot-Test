@@ -1,12 +1,11 @@
 using Godot;
 using Godot.Collections;
-using System;
 
 [GlobalClass]
 public partial class InventoryResource : Resource
 {
 	[Export]
-	public Dictionary<string, InventorySlotResource> InventorySlots  = new();
+	public Dictionary<string, InventorySlotResource> InventorySlots = new();
 
 	[Export]
 	public int MaxSize = 15;
@@ -17,13 +16,13 @@ public partial class InventoryResource : Resource
 	public void ItemAdded(InventoryItemResource item)
 	{
 		GD.Print($"Item added: {item.Name}");
-		if(InventorySlots.ContainsKey(item.Name))
+		if (InventorySlots.ContainsKey(item.Name))
 		{
 			InventorySlots[item.Name].Amount++;
 		}
 		else
 		{
-			if(InventorySlots.Count >= MaxSize)
+			if (InventorySlots.Count >= MaxSize)
 			{
 				return;
 			}

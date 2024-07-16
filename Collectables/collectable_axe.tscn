@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://hw5ij1yel8fd"]
+
+[ext_resource type="PackedScene" uid="uid://cxrx10p5k0pfu" path="res://Collectables/collectable_base.tscn" id="1_p3asp"]
+[ext_resource type="Resource" uid="uid://cukmblw7wbwbg" path="res://Inventory/Items/axe.tres" id="2_bltmq"]
+[ext_resource type="Texture2D" uid="uid://eumu8esfdoak" path="res://Weapons/Art/Axe.png" id="3_e3jhs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkvll"]
+resource_local_to_scene = true
+size = Vector2(15.3333, 16.6667)
+
+[node name="CollectableAxe" instance=ExtResource("1_p3asp")]
+ItemResource = ExtResource("2_bltmq")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_jkvll")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_e3jhs")

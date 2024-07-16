@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Godot;
+﻿using Godot;
 
 namespace ARPG.Shared;
 
@@ -18,7 +13,7 @@ public partial class StateMachine : Node
         _currentState.Enter();
     }
 
-    public override void _Process(float delta)
+    public override void _Process(double delta)
     {
         _currentState?.Update(delta);
     }

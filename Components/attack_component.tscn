@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjijst1m3t12u"]
+
+[ext_resource type="Script" path="res://Components/AttackComponent.cs" id="1_dmrom"]
+
+[node name="AttackComponent" type="Node"]
+script = ExtResource("1_dmrom")

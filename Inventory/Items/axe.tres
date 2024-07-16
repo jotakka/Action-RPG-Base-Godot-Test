@@ -7,3 +7,4 @@
 script = ExtResource("2_cnq6i")
 Name = "Axe"
 Texture = ExtResource("1_fmhes")
+AnimationOnCollect = "spin"

@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class SlotGui : Panel
 {
@@ -9,17 +8,17 @@ public partial class SlotGui : Panel
 	public string ItemNodePath { get; set; } = "CenterContainer/Panel/Item";
 	[Export]
 	public string ItemCountLabelNodePath { get; set; } = "CenterContainer/Panel/Label";
-	
+
 	private Sprite2D _backgroundSprite;
 	private Sprite2D _itemSprite;
 	private Label _itemCountLabel;
-	
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_backgroundSprite = GetNode<Sprite2D>(BackgroundNodePath);
-		_itemSprite = GetNode<Sprite2D>(ItemNodePath);
-		_itemCountLabel= GetNode<Label>(ItemCountLabelNodePath);
+		//_backgroundSprite = GetNode<Sprite2D>(BackgroundNodePath);
+		//_itemSprite = GetNode<Sprite2D>(ItemNodePath);
+		//_itemCountLabel = GetNode<Label>(ItemCountLabelNodePath);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

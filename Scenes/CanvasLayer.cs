@@ -1,6 +1,5 @@
 using ARPG.Shared;
 using Godot;
-using System;
 
 public partial class CanvasLayer : Godot.CanvasLayer
 {
@@ -23,7 +22,7 @@ public partial class CanvasLayer : Godot.CanvasLayer
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event.IsActionPressed(UserInput.ToggleInventory))
+		if (@event.IsActionPressed(UserInput.ToggleInventory.Value))
 		{
 			_inventroyGui.ToggleInventory();
 		}

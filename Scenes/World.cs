@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class World : Node2D
 {
@@ -13,13 +12,13 @@ public partial class World : Node2D
 
 	private HeartsContainer _heartsContainer;
 	private InventoryGui _inventoryGui;
-	private Player _player;
+	private PlayerNode _player;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_heartsContainer = GetNode<HeartsContainer>(HeartsContainerNodePath);
-		_player = GetNode<Player>(PlayerNodePath);
+		_player = GetNode<PlayerNode>(PlayerNodePath);
 		_heartsContainer.SetMaxHearts(_player.MaxHealth);
 		_inventoryGui = GetNode<InventoryGui>(InventoryGuiNodePath);
 

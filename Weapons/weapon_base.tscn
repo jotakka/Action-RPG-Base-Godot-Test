@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhd78oaxkmeat"]
+
+[ext_resource type="Script" path="res://Weapons/WeaponBase.cs" id="1_4tvmg"]
+
+[node name="WeaponBase" type="Area2D"]
+script = ExtResource("1_4tvmg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

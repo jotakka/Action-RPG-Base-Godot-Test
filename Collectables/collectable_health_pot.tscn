@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://csaw5drx6ynxw"]
+
+[ext_resource type="PackedScene" uid="uid://cxrx10p5k0pfu" path="res://Collectables/collectable_base.tscn" id="1_1goaq"]
+[ext_resource type="Resource" uid="uid://w1rldlvxf77f" path="res://Inventory/Items/life_pot.tres" id="2_0xe3h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dp8m"]
+resource_local_to_scene = true
+size = Vector2(15.3333, 16.6667)
+
+[node name="CollectableHealthPot" instance=ExtResource("1_1goaq")]
+ItemResource = ExtResource("2_0xe3h")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_4dp8m")

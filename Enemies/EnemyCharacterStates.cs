@@ -1,5 +1,4 @@
 ﻿using Godot;
-using System;
 
 namespace ARPG.Enemies
 {
@@ -37,7 +36,7 @@ namespace ARPG.Enemies
         public void UpdateMovementStates(Vector2 position)
         {
             _moveDirection = (_endPosition - position);
-            if(_moveDirection.Length() < _limit)
+            if (_moveDirection.Length() < _limit)
             {
                 ChangeDirection();
             }

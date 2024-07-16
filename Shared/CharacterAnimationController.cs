@@ -1,5 +1,4 @@
 ﻿using Godot;
-using System;
 
 namespace ARPG.Shared;
 
@@ -51,6 +50,7 @@ public partial class CharacterAnimationController
 
     private static class AnimationType
     {
+        public const string Idle = "Idle";
         public const string Walk = "walk";
         public const string Attack = "attack";
     }

@@ -1,14 +1,12 @@
 using ARPG.Enemies;
-using ARPG.Player;
 using ARPG.Shared;
 using Godot;
-using System;
 
 public partial class Octopus : CharacterBody2D
 {
 	private EnemyCharacterStates _enemyCharacterStates;
 	private CharacterAnimationController _animationController;
-	
+
 	[Export]
 	public float Speed = 0.5f;
 	[Export]
