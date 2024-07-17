@@ -96,9 +96,11 @@ _data = {
 "spin": SubResource("Animation_ewbsu")
 }
 
-[node name="CollectableBase" type="Area2D" node_paths=PackedStringArray("AnimationPlayer")]
+[node name="CollectableBase" type="Area2D" node_paths=PackedStringArray("Sprite2D", "CollectingShape", "AnimationPlayer")]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_bf6dv")
+Sprite2D = NodePath("Sprite2D")
+CollectingShape = NodePath("CollisionShape2D")
 AnimationPlayer = NodePath("AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

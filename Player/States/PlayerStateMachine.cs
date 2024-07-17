@@ -1,10 +1,6 @@
 ﻿using ARPG.Player;
-using Godot;
-using System;
+using ARPG.Shared;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 public partial class PlayerStateMachine
 {
@@ -16,7 +12,7 @@ public partial class PlayerStateMachine
         {
             [PlayerInputAction.Idle] = new PlayerIdleState(player),
             [PlayerInputAction.Walk] = new PlayerWalkState(player),
-            [PlayerInputAction.Attack] = new PlayerAttackState(player),
+            [PlayerInputAction.Attack] = new PlayerAttackState(player, StatePriority.HIGHEST),
             [PlayerInputAction.Hurt] = new PlayerHurtState(player),
         };
         _currentState = _stateTransitions[PlayerInputAction.Idle];
@@ -29,9 +25,18 @@ public partial class PlayerStateMachine
 
     public void ChangeState(PlayerInputAction newState)
     {
-        _currentState.Exit();
-        _currentState = _stateTransitions[newState];
-        _currentState.Enter();
+        var nextState = _stateTransitions[newState];
+        if (AllowInterruption(nextState))
+        {
+            _currentState.Exit();
+            _currentState = _stateTransitions[newState];
+            _currentState.Enter();
+        }
+    }
+
+    private bool AllowInterruption(PlayerStateBase nextState)
+    {
+        return _currentState.AllowInterruption is true
+            || nextState.Priority.HasHigherPriorityThan(_currentState.Priority);
     }
 }
-

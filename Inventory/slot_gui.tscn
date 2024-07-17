@@ -1,14 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://djy0c4hl7iocr"]
+[gd_scene load_steps=4 format=3 uid="uid://djy0c4hl7iocr"]
 
 [ext_resource type="Script" path="res://Inventory/SlotGui.cs" id="1_3230i"]
 [ext_resource type="Texture2D" uid="uid://b6sjilcsupxbn" path="res://Inventory/Art/inventorySlot.png" id="2_jccuw"]
+[ext_resource type="FontFile" uid="uid://b05iqn8nshr8v" path="res://Inventory/Art/NormalFont.ttf" id="3_qa67o"]
 
-[node name="SlotGui" type="Panel"]
+[node name="SlotGui" type="Panel" node_paths=PackedStringArray("BackgroundSprite", "ItemSprite", "ItemCountLabel")]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 offset_right = 20.0
 offset_bottom = 20.0
 script = ExtResource("1_3230i")
+BackgroundSprite = NodePath("Background")
+ItemSprite = NodePath("CenterContainer/Panel/Item")
+ItemCountLabel = NodePath("CenterContainer/Panel/Label")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("2_jccuw")
@@ -32,6 +36,7 @@ offset_top = -1.0
 offset_right = 9.0
 offset_bottom = 10.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qa67o")
 theme_override_font_sizes/font_size = 8
 text = "9"
 horizontal_alignment = 2

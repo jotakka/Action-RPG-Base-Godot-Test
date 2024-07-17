@@ -7,6 +7,8 @@ public partial class CollectingComponent : Node
 {
 	[Export]
 	public Area2D? HurtBoxComponent;
+	[Signal]
+	public delegate void ItemCollectedSignalEventHandler(InventoryItemResource inventoryItemResource);
 
 	public override void _Ready()
 	{
@@ -20,6 +22,10 @@ public partial class CollectingComponent : Node
 	{
 		if (area is CollectableBase collectable)
 		{
+			if(collectable.ItemResource is not null)
+			{
+				EmitSignal(nameof(ItemCollectedSignal), collectable.ItemResource);
+			}
 			await OnCollectedAsync(collectable);
 		}
 	}

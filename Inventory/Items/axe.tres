@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="InventoryItemResource" load_steps=3 format=3 uid="uid://cukmblw7wbwbg"]
 
 [ext_resource type="Texture2D" uid="uid://10h1cj7i1e0e" path="res://Collectables/Art/Axe.png" id="1_kessf"]
-[ext_resource type="Script" path="res://Inventory/InventoryItemResource.cs" id="2_cnq6i"]
+[ext_resource type="Script" path="res://Inventory/Resources/InventoryItemResource.cs" id="1_x53uv"]
 
 [resource]
-script = ExtResource("2_cnq6i")
-Name = "Axe"
+script = ExtResource("1_x53uv")
+Name = "axe"
 Texture = ExtResource("1_kessf")
 AnimationOnCollect = "spin"

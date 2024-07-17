@@ -24,7 +24,7 @@ public partial class CanvasLayer : Godot.CanvasLayer
 	{
 		if (@event.IsActionPressed(UserInput.ToggleInventory.Value))
 		{
-			_inventroyGui.ToggleInventory();
+			_inventroyGui.ToggleInventoryGui();
 		}
 		base._Input(@event);
 	}

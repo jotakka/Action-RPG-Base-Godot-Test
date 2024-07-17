@@ -1,16 +1,18 @@
 ﻿using System;
 using ARPG.Player;
+using ARPG.Shared;
 using Godot;
 
 public sealed class PlayerWalkState : PlayerStateBase
 {
-    public PlayerWalkState(PlayerNode player) : base(player)
+    public PlayerWalkState(PlayerNode player, StatePriority priority = StatePriority.REGULAR) 
+        : base(player, priority)
     {
     }
 
     public override void Enter()
     {
-        //UpdateWalking();
+        UpdateWalking();
         base.Enter();
     }
 

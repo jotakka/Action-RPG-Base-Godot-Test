@@ -5,7 +5,8 @@ using Godot;
 
 public sealed class PlayerIdleState : PlayerStateBase
 {
-    public PlayerIdleState(PlayerNode player) : base(player)
+    public PlayerIdleState(PlayerNode player, StatePriority priority = StatePriority.REGULAR)
+        : base(player, priority)
     {
     }
 

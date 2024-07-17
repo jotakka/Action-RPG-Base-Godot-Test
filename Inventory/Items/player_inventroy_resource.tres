@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="InventoryResource" load_steps=2 format=3 uid="uid://cfgj4b70tyie3"]
 
-[ext_resource type="Script" path="res://Inventory/InventoryResource.cs" id="3_m5h6w"]
+[ext_resource type="Script" path="res://Inventory/Resources/InventoryResource.cs" id="1_deyeq"]
 
 [resource]
-script = ExtResource("3_m5h6w")
+script = ExtResource("1_deyeq")
 InventorySlots = {}
 MaxSize = 15

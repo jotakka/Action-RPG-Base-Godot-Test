@@ -3,45 +3,34 @@ using Godot;
 public partial class SlotGui : Panel
 {
 	[Export]
-	public string BackgroundNodePath { get; set; } = "Background";
+	public Sprite2D? BackgroundSprite { get; set; }
 	[Export]
-	public string ItemNodePath { get; set; } = "CenterContainer/Panel/Item";
+	public Sprite2D? ItemSprite { get; set; }
 	[Export]
-	public string ItemCountLabelNodePath { get; set; } = "CenterContainer/Panel/Label";
+	public Label? ItemCountLabel { get; set; }
 
-	private Sprite2D _backgroundSprite;
-	private Sprite2D _itemSprite;
-	private Label _itemCountLabel;
-
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		//_backgroundSprite = GetNode<Sprite2D>(BackgroundNodePath);
-		//_itemSprite = GetNode<Sprite2D>(ItemNodePath);
-		//_itemCountLabel = GetNode<Label>(ItemCountLabelNodePath);
+		BackgroundSprite!.Frame = 0;
+		ItemSprite!.Hide();
+		ItemCountLabel!.Hide();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
-	public void Update(InventorySlotResource inventorySlot)
+	public void Update(InventorySlotResource? inventorySlot)
 	{
 		if (inventorySlot is null)
 		{
-			_backgroundSprite.Frame = 0;
-			_itemSprite.Visible = false;
-			_itemCountLabel.Visible = false;
-			return;
+			BackgroundSprite!.Frame = 0;
+			ItemSprite?.Hide();
+			ItemCountLabel?.Hide();
 		}
 		else
 		{
-			_backgroundSprite.Frame = 1;
-			_itemSprite.Visible = true;
-			_itemCountLabel.Visible = true;
-			_itemCountLabel.Text = inventorySlot.Amount.ToString();
-			_itemSprite.Texture = inventorySlot.InventoryItem.Texture;
+			ItemSprite?.Show();
+			ItemCountLabel?.Show();
+			BackgroundSprite!.Frame = 1;
+			ItemCountLabel!.Text = inventorySlot.Amount.ToString();
+			ItemSprite!.Texture = inventorySlot.InventoryItem.Texture;
 		}
 	}
 }

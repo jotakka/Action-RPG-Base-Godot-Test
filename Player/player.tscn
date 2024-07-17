@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://cle56lmpiu0ud"]
+[gd_scene load_steps=31 format=3 uid="uid://cle56lmpiu0ud"]
 
 [ext_resource type="Script" path="res://Player/PlayerNode.cs" id="1_q0ydn"]
 [ext_resource type="Texture2D" uid="uid://dhoybu3ce528w" path="res://Player/Art/Player.png" id="2_40tbq"]
+[ext_resource type="Resource" uid="uid://cfgj4b70tyie3" path="res://Inventory/Items/player_inventroy_resource.tres" id="2_jibaq"]
 [ext_resource type="PackedScene" uid="uid://cem0qjvsbfckd" path="res://Player/player_input_processor.tscn" id="4_4agf6"]
 [ext_resource type="PackedScene" uid="uid://bu05vc7g05ubh" path="res://Components/walk_animation_component.tscn" id="4_fi6vt"]
 [ext_resource type="PackedScene" uid="uid://cl54t72t0bahm" path="res://Components/weapon_component.tscn" id="6_jjfhj"]
@@ -454,7 +455,7 @@ height = 14.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7iupk"]
 size = Vector2(14, 4)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerInputProcessor", "WalkAnimationComponent", "AttackComponent", "HurtBoxComponent", "WeaponComponent", "HealthComponent", "Sprite2D")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerInputProcessor", "WalkAnimationComponent", "AttackComponent", "HurtBoxComponent", "WeaponComponent", "HealthComponent", "Sprite2D", "CollectingComponent")]
 texture_filter = 1
 script = ExtResource("1_q0ydn")
 PlayerInputProcessor = NodePath("PlayerInputProcessor")
@@ -464,6 +465,8 @@ HurtBoxComponent = NodePath("HurtBoxComponent")
 WeaponComponent = NodePath("WeaponComponent")
 HealthComponent = NodePath("HealthComponent")
 Sprite2D = NodePath("Sprite2D")
+InventoryResource = ExtResource("2_jibaq")
+CollectingComponent = NodePath("CollectingComponent")
 KnockBackFactor = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

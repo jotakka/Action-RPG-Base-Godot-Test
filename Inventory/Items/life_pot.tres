@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="InventoryItemResource" load_steps=3 format=3 uid="uid://w1rldlvxf77f"]
 
 [ext_resource type="Texture2D" uid="uid://iu46w8qhwa3u" path="res://Collectables/Art/LifePot.png" id="1_000rf"]
-[ext_resource type="Script" path="res://Inventory/InventoryItemResource.cs" id="2_5hsct"]
+[ext_resource type="Script" path="res://Inventory/Resources/InventoryItemResource.cs" id="2_5hsct"]
 
 [resource]
 script = ExtResource("2_5hsct")

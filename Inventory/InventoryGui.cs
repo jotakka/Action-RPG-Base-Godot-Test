@@ -1,63 +1,63 @@
 using Godot;
+using Godot.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 public partial class InventoryGui : Control
 {
+	[Export]
+	public InventoryResource InventoryResource { get; set; } = null!;
+	[Export]
+	private GridContainer GridContainer { get; set; } = null!;
 	[Signal]
 	public delegate void InventoryClosedEventHandler();
 	[Signal]
 	public delegate void InventoryOpenedEventHandler();
 
+	private IEnumerable<SlotGui> _inventorySlots = Enumerable.Empty<SlotGui>();
+	private bool _isOpen = false;
 
-	private InventoryResource _inventoryResource;
-	private IEnumerable<SlotGui> _inventorySlots;
-	private bool isOpen = false;
 
 	public override void _Ready()
 	{
-		//_inventoryResource = (InventoryResource)ResourceLoader
-		//	.Load("res://Inventory/Items/player_inventroy_resource.tres");
-		//_inventorySlots = (GetNode<GridContainer>("NinePatchRect/GridContainer"))
-		//	.GetChildren()
-		//	.OfType<SlotGui>();
-		//_inventoryResource.SlotItemAdded += () =>
-		//{
-		//	GD.Print("Item Added Signal");
-		//	UpdateItems();
-		//};
+		_inventorySlots = GridContainer!
+			.GetChildren()
+			.OfType<SlotGui>();
 
-		//UpdateItems();
-		//Hide();
+		InventoryResource.ItemUpdatedSignal += OnUpdateInventoryItems;
+
+		Hide();
 	}
 
-	private void UpdateItems()
+	public void OnUpdateInventoryItems()
 	{
-		//var i = 0;
-		//foreach (var slotItem in _inventoryResource.InventorySlots.Values)
-		//{
-		//	_inventorySlots.ElementAt(i).Update(slotItem);
-		//	i++;
-		//}
-		//for (; i < _inventorySlots.Count(); i++)
-		//{
-		//	_inventorySlots.ElementAt(i).Update(null);
-		//}
+		GD.Print("Inventory updated signal received");
+		var i = 0;
+		foreach (var item in InventoryResource.InvetoryItems)
+		{
+			_inventorySlots.ElementAt(i).Update(item);
+			i++;
+		}
+		for (; i < _inventorySlots.Count(); i++)
+		{
+			_inventorySlots.ElementAt(i).Update(null);
+		}
 	}
 
-	public void ToggleInventory()
+	public void ToggleInventoryGui()
 	{
-		//isOpen = !isOpen;
+		_isOpen = !_isOpen;
 
-		//if (isOpen)
-		//{
-		//	Show();
-		//	EmitSignal(nameof(InventoryOpened));
-		//}
-		//else
-		//{
-		//	Hide();
-		//	EmitSignal(nameof(InventoryClosed));
-		//}
+		if (_isOpen)
+		{
+			Show();
+			EmitSignal(nameof(InventoryOpened));
+		}
+		else
+		{
+			Hide();
+			EmitSignal(nameof(InventoryClosed));
+		}
 	}
 }
+

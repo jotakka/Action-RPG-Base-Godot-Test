@@ -11,9 +11,17 @@ public partial class InventoryResource : Resource
 	public int MaxSize = 15;
 
 	[Signal]
-	public delegate void SlotItemAddedEventHandler();
+	public delegate void ItemUpdatedSignalEventHandler();
 
-	public void ItemAdded(InventoryItemResource item)
+	public System.Collections.Generic.ICollection<InventorySlotResource> InvetoryItems
+	{
+		get
+		{
+			return InventorySlots.Values;
+		}
+	}
+
+	public void AddItem(InventoryItemResource item)
 	{
 		GD.Print($"Item added: {item.Name}");
 		if (InventorySlots.ContainsKey(item.Name))
@@ -33,7 +41,16 @@ public partial class InventoryResource : Resource
 				Amount = 1
 			};
 		}
+		EmitSignal(nameof(ItemUpdatedSignal));
+	}
 
-		EmitSignal(nameof(SlotItemAdded));
+	public void RemovedItem(InventoryItemResource item)
+	{
+		GD.Print($"Item removed: {item.Name}");
+		if (InventorySlots.ContainsKey(item.Name))
+		{
+			InventorySlots[item.Name].Amount--;
+		}
+		EmitSignal(nameof(ItemUpdatedSignal));
 	}
 }

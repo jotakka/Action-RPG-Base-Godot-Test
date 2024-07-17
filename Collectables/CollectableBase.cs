@@ -15,3 +15,4 @@ public partial class CollectableBase : Area2D
 	[Export]
 	public AnimationPlayer? AnimationPlayer;
 }
+	

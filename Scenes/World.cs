@@ -12,7 +12,6 @@ public partial class World : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-
 		if (HeartsContainer is not null && PlayerNode is not null)
 		{
 			HeartsContainer.SetMaxHearts(
@@ -21,11 +20,11 @@ public partial class World : Node2D
 			PlayerNode.HealthComponent!.HealthChangedSignal += HeartsContainer.UpdateHearts;
 		}
 
-
 		if (InventoryGui is not null)
 		{
 			InventoryGui.InventoryOpened += OnInventoryOpened;
 			InventoryGui.InventoryClosed += OnInventoryClosed;
+			InventoryGui.InventoryResource.ItemUpdatedSignal += InventoryGui.OnUpdateInventoryItems;
 		}
 	}
 

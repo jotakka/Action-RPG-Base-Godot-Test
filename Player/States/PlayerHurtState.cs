@@ -1,10 +1,12 @@
 ﻿using ARPG.Player;
+using ARPG.Shared;
 using Godot;
 using System;
 
 public sealed class PlayerHurtState : PlayerStateBase
 {
-    public PlayerHurtState(PlayerNode player) : base(player)
+    public PlayerHurtState(PlayerNode player, StatePriority priority = StatePriority.REGULAR)
+        : base(player, priority)
     {
     }
 
