@@ -27,6 +27,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="ARPG"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/anim_player_refactor/plugin.cfg", "res://addons/goutte.animated_shape_2d/plugin.cfg", "res://addons/panku_console/plugin.cfg")
+
 [input]
 
 ui_left={

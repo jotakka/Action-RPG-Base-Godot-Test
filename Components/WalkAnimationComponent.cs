@@ -15,6 +15,13 @@ public partial class WalkAnimationComponent : Node2D
 
 	public AnimationDirection LastFacingDirection { get; private set; } = AnimationDirection.Down;
 
+	public void PlayWalkAnimation(string animationLibName, Vector2 direction)
+	{
+		var directionString = Helpers.GetAnimationDirectionString(direction);
+		LastFacingDirection = directionString;
+		AnimationPlayer?.Play(animationLibName+ "/"+AnimationType.Walk + "_" + directionString);
+	}
+
 	public void PlayWalkAnimation(Vector2 direction)
 	{
 		var directionString = Helpers.GetAnimationDirectionString(direction);

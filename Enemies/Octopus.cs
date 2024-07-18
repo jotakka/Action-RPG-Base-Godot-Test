@@ -20,7 +20,6 @@ public partial class Octopus : CharacterBody2D
 			GetNode<AnimatedSprite2D>("AnimatedSprite2D"),
 			null
 		);
-
 		HitBoxComponent.IsEnemyNode = true;
 		//_enemyCharacterStates = new(
 		//	Position,

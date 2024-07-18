@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://0r5f3ohsukop"]
+[gd_scene load_steps=21 format=3 uid="uid://0r5f3ohsukop"]
 
 [ext_resource type="PackedScene" uid="uid://dcdg2l5gn2j3d" path="res://GUI/hearts_container.tscn" id="1_22axb"]
 [ext_resource type="Script" path="res://Scenes/World.cs" id="1_ako2l"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://coldajp7gji0u" path="res://Collectables/collectable_sword.tscn" id="8_qy75r"]
 [ext_resource type="PackedScene" uid="uid://csaw5drx6ynxw" path="res://Collectables/collectable_health_pot.tscn" id="9_bnwii"]
 [ext_resource type="PackedScene" uid="uid://hw5ij1yel8fd" path="res://Collectables/collectable_axe.tscn" id="10_tmrxp"]
+[ext_resource type="PackedScene" uid="uid://42g15h3wbfl3" path="res://Enemies/enemy_owl.tscn" id="14_li1h3"]
+[ext_resource type="PackedScene" uid="uid://bl3ltcrn7kx0a" path="res://Enemies/enemy_base.tscn" id="15_xwnlg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wl4xb"]
 texture = ExtResource("2_uwibc")
@@ -3305,11 +3307,25 @@ position = Vector2(26, 106)
 [node name="Marker2D" type="Marker2D" parent="Octopus"]
 position = Vector2(-54, 70)
 
-[node name="Octopus2" parent="." instance=ExtResource("6_brwx3")]
-position = Vector2(26, 39)
-
 [node name="Octopus3" parent="." instance=ExtResource("6_brwx3")]
-position = Vector2(82, 28)
+position = Vector2(20, 63)
 
-[node name="Octopus4" parent="." instance=ExtResource("6_brwx3")]
-position = Vector2(130, 25)
+[node name="EnemyOwl" parent="." instance=ExtResource("14_li1h3")]
+position = Vector2(222, 19)
+
+[node name="Marker2D2" type="Marker2D" parent="EnemyOwl"]
+position = Vector2(87, 84)
+
+[node name="EnemyOwl2" parent="." node_paths=PackedStringArray("EndPoint") instance=ExtResource("14_li1h3")]
+position = Vector2(311, 141)
+EndPoint = NodePath("Marker2D2")
+
+[node name="Marker2D2" type="Marker2D" parent="EnemyOwl2"]
+position = Vector2(50, -68)
+
+[node name="EnemyBase" parent="." node_paths=PackedStringArray("EndPoint") instance=ExtResource("15_xwnlg")]
+position = Vector2(117, 17)
+EndPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="EnemyBase"]
+position = Vector2(-50, 1)

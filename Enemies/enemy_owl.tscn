@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://42g15h3wbfl3"]
+
+[ext_resource type="AnimationLibrary" uid="uid://bti7j6i0j3ubq" path="res://Enemies/Resources/enemy_owl_animations.res" id="2_orh2h"]
+[ext_resource type="Texture2D" uid="uid://lval4ai2toxj" path="res://Enemies/Art/Owl.png" id="2_wxd3j"]
+[ext_resource type="PackedScene" uid="uid://djjkrcnkuummg" path="res://Components/hit_box_component.tscn" id="3_msx2a"]
+[ext_resource type="PackedScene" uid="uid://bv4ocnm5pgfae" path="res://Components/enemy_hurt_box_component.tscn" id="4_g032p"]
+[ext_resource type="Script" path="res://Enemies/EnemyBase.cs" id="5_6wqpd"]
+[ext_resource type="PackedScene" uid="uid://bu05vc7g05ubh" path="res://Components/walk_animation_component.tscn" id="6_03jbr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_73cn6"]
+resource_local_to_scene = true
+radius = 8.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fo6ov"]
+radius = 6.0
+height = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqf37"]
+size = Vector2(15, 5)
+
+[node name="EnemyOwl" type="CharacterBody2D" node_paths=PackedStringArray("HitBoxComponent", "HurtBoxComponent", "Sprite2D", "EnvCollisionShape", "AnimationPlayer", "WalkAnimationComponent", "EndPoint")]
+script = ExtResource("5_6wqpd")
+HitBoxComponent = NodePath("HitBoxComponent")
+AnimationLibraryResource = ExtResource("2_orh2h")
+HurtBoxComponent = NodePath("EnemyHurtBoxComponent")
+Sprite2D = NodePath("Sprite2D")
+EnvCollisionShape = NodePath("EnvColisionBox")
+AnimationPlayer = NodePath("AnimationPlayer")
+WalkAnimationComponent = NodePath("WalkAnimationComponent")
+EndPoint = NodePath("Marker2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wxd3j")
+hframes = 4
+vframes = 4
+frame = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("HitBoxShape") instance=ExtResource("3_msx2a")]
+HitBoxShape = NodePath("HitBoxShape")
+
+[node name="HitBoxShape" type="CollisionShape2D" parent="HitBoxComponent"]
+shape = SubResource("CapsuleShape2D_73cn6")
+
+[node name="EnemyHurtBoxComponent" parent="." node_paths=PackedStringArray("HurtBoxShape") instance=ExtResource("4_g032p")]
+HurtBoxShape = NodePath("HurtBoxShape")
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="EnemyHurtBoxComponent"]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_fo6ov")
+debug_color = Color(0.882385, 0.206884, 0.658853, 0.42)
+
+[node name="WalkAnimationComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("6_03jbr")]
+position = Vector2(19, 15)
+AnimationPlayer = NodePath("../AnimationPlayer")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(41, 17)
+
+[node name="EnvColisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 6)
+shape = SubResource("RectangleShape2D_bqf37")
