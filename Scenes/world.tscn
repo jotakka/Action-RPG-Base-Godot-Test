@@ -3299,9 +3299,17 @@ limit_top = 0
 script = ExtResource("5_isf55")
 Tilemap = NodePath("../../TileMap")
 
-[node name="Octopus" parent="." node_paths=PackedStringArray("EndPoint") instance=ExtResource("6_brwx3")]
-position = Vector2(173, 89)
-EndPoint = NodePath("Marker2D")
+[node name="Octopus" parent="." instance=ExtResource("6_brwx3")]
+position = Vector2(26, 106)
 
 [node name="Marker2D" type="Marker2D" parent="Octopus"]
 position = Vector2(-54, 70)
+
+[node name="Octopus2" parent="." instance=ExtResource("6_brwx3")]
+position = Vector2(26, 39)
+
+[node name="Octopus3" parent="." instance=ExtResource("6_brwx3")]
+position = Vector2(82, 28)
+
+[node name="Octopus4" parent="." instance=ExtResource("6_brwx3")]
+position = Vector2(130, 25)

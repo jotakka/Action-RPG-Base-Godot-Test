@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 public partial class CollectingComponent : Node
 {
 	[Export]
-	public Area2D? HurtBoxComponent;
+	public HitBoxComponent? HitBoxComponent;
 	[Signal]
 	public delegate void ItemCollectedSignalEventHandler(InventoryItemResource inventoryItemResource);
 
 	public override void _Ready()
 	{
-		if (HurtBoxComponent is not null)
+		if (HitBoxComponent is not null)
 		{
-			HurtBoxComponent.AreaEntered += OnHitBoxEnteredAsync;
+			HitBoxComponent.AreaEntered += OnHitBoxEnteredAsync;
 		}
 	}
 

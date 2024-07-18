@@ -1,14 +1,13 @@
-[gd_scene load_steps=31 format=3 uid="uid://cle56lmpiu0ud"]
+[gd_scene load_steps=30 format=3 uid="uid://cle56lmpiu0ud"]
 
 [ext_resource type="Script" path="res://Player/PlayerNode.cs" id="1_q0ydn"]
 [ext_resource type="Texture2D" uid="uid://dhoybu3ce528w" path="res://Player/Art/Player.png" id="2_40tbq"]
 [ext_resource type="Resource" uid="uid://cfgj4b70tyie3" path="res://Inventory/Items/player_inventroy_resource.tres" id="2_jibaq"]
 [ext_resource type="PackedScene" uid="uid://cem0qjvsbfckd" path="res://Player/player_input_processor.tscn" id="4_4agf6"]
 [ext_resource type="PackedScene" uid="uid://bu05vc7g05ubh" path="res://Components/walk_animation_component.tscn" id="4_fi6vt"]
-[ext_resource type="PackedScene" uid="uid://cl54t72t0bahm" path="res://Components/weapon_component.tscn" id="6_jjfhj"]
 [ext_resource type="PackedScene" uid="uid://cjijst1m3t12u" path="res://Components/attack_component.tscn" id="6_pd1cp"]
 [ext_resource type="PackedScene" uid="uid://bas711ypnodf4" path="res://Weapons/weapon_sword.tscn" id="7_dbt8e"]
-[ext_resource type="PackedScene" uid="uid://djjkrcnkuummg" path="res://Components/hurt_box_component.tscn" id="8_2e0ut"]
+[ext_resource type="PackedScene" uid="uid://djjkrcnkuummg" path="res://Components/hit_box_component.tscn" id="9_rc6ki"]
 [ext_resource type="PackedScene" uid="uid://ctjdshnlpan5s" path="res://Components/collecting_component.tscn" id="10_78ytm"]
 [ext_resource type="PackedScene" uid="uid://dyreh6r8tc3jb" path="res://Components/health_component.tscn" id="10_rl20k"]
 
@@ -17,7 +16,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponComponent:rotation")
+tracks/0/path = NodePath("Weapon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -29,7 +28,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponComponent:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -41,7 +40,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WeaponComponent:z_index")
+tracks/2/path = NodePath("Weapon:z_index")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -65,7 +64,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WeaponComponent:z_index")
+tracks/4/path = NodePath("Weapon:z_index")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -81,7 +80,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponComponent:rotation")
+tracks/0/path = NodePath("Weapon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -93,7 +92,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponComponent:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -117,7 +116,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WeaponComponent:z_index")
+tracks/3/path = NodePath("Weapon:z_index")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -133,7 +132,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponComponent:rotation")
+tracks/0/path = NodePath("Weapon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -145,7 +144,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponComponent:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -173,7 +172,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponComponent:rotation")
+tracks/0/path = NodePath("Weapon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -185,7 +184,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponComponent:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -213,7 +212,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponComponent:rotation")
+tracks/0/path = NodePath("Weapon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -225,7 +224,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponComponent:position")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -249,7 +248,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WeaponComponent:z_index")
+tracks/3/path = NodePath("Weapon:z_index")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -455,14 +454,15 @@ height = 14.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7iupk"]
 size = Vector2(14, 4)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerInputProcessor", "WalkAnimationComponent", "AttackComponent", "HurtBoxComponent", "WeaponComponent", "HealthComponent", "Sprite2D", "CollectingComponent")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerInputProcessor", "WalkAnimationComponent", "AttackComponent", "HitBoxComponent", "Weapon", "HealthComponent", "Sprite2D", "CollectingComponent")]
 texture_filter = 1
+collision_layer = 17
 script = ExtResource("1_q0ydn")
 PlayerInputProcessor = NodePath("PlayerInputProcessor")
 WalkAnimationComponent = NodePath("WalkAnimationComponent")
 AttackComponent = NodePath("AttackComponent")
-HurtBoxComponent = NodePath("HurtBoxComponent")
-WeaponComponent = NodePath("WeaponComponent")
+HitBoxComponent = NodePath("HitBoxComponent")
+Weapon = NodePath("Weapon")
 HealthComponent = NodePath("HealthComponent")
 Sprite2D = NodePath("Sprite2D")
 InventoryResource = ExtResource("2_jibaq")
@@ -507,31 +507,30 @@ grow_vertical = 2
 [node name="AttackComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("6_pd1cp")]
 AnimationPlayer = NodePath("../AnimationPlayer")
 
-[node name="WeaponComponent" parent="." node_paths=PackedStringArray("Weapon") instance=ExtResource("6_jjfhj")]
-z_index = 2
-position = Vector2(3, 8)
-rotation = 2.0944
-Weapon = NodePath("WeaponSword")
-
-[node name="WeaponSword" parent="WeaponComponent" instance=ExtResource("7_dbt8e")]
-
-[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("HurtBoxShape", "HurtEffectPlayer", "HurtTimer") instance=ExtResource("8_2e0ut")]
-HurtBoxShape = NodePath("HurtBox")
+[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("HitBoxShape", "HurtEffectPlayer", "HurtTimer") instance=ExtResource("9_rc6ki")]
+collision_mask = 24
+HitBoxShape = NodePath("HitBox")
 HurtEffectPlayer = NodePath("../EffectsAnimationPlayer")
 HurtTimer = NodePath("HurtTimer")
 
-[node name="HurtBox" type="CollisionShape2D" parent="HurtBoxComponent"]
+[node name="HitBox" type="CollisionShape2D" parent="HitBoxComponent"]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_mxa5t")
 debug_color = Color(0.951464, 0.123553, 0.462957, 0.42)
 
-[node name="HurtTimer" type="Timer" parent="HurtBoxComponent"]
+[node name="HurtTimer" type="Timer" parent="HitBoxComponent"]
 
-[node name="CollectingComponent" parent="." node_paths=PackedStringArray("HurtBoxComponent") instance=ExtResource("10_78ytm")]
-HurtBoxComponent = NodePath("../HurtBoxComponent")
+[node name="CollectingComponent" parent="." node_paths=PackedStringArray("HitBoxComponent") instance=ExtResource("10_78ytm")]
+HitBoxComponent = NodePath("../HitBoxComponent")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_7iupk")
 
 [node name="HealthComponent" parent="." instance=ExtResource("10_rl20k")]
+
+[node name="Weapon" parent="." instance=ExtResource("7_dbt8e")]
+z_index = 2
+position = Vector2(3, 8)
+rotation = 2.0944
+collision_layer = 8

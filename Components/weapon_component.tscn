@@ -1,6 +1,48 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl54t72t0bahm"]
+[gd_scene load_steps=2 format=3 uid="uid://dcoxegtg0gmm8"]
 
-[ext_resource type="Script" path="res://Components/WeaponComponent.cs" id="1_hgeu6"]
+[sub_resource type="CSharpScript" id="CSharpScript_bw8ci"]
+script/source = "using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Godot;
 
-[node name="WeaponComponent" type="Node2D"]
-script = ExtResource("1_hgeu6")
+public partial class WeaponComponent : Area2D
+{
+	[Export]
+	public WeaponBase Weapon { get; set; } = null!;
+
+	public override void _Ready()
+	{
+		Weapon.Hide();
+	}
+
+	public void ShowWeapon()
+	{
+		SetColision(true);
+		Weapon.Show();
+	}
+	public void HideWeapon()
+	{
+		SetColision(false);
+		Weapon.Hide();
+	}
+
+	private void SetColision(bool value)
+	{
+		this.SetCollisionLayerValue(
+			//CollisionShape.SetVisibilityLayerBit(
+			4,
+			value
+		);
+		GD.Print(this.GetCollisionLayerValue(4));
+	}
+}
+
+"
+
+[node name="WeaponComponent" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = SubResource("CSharpScript_bw8ci")

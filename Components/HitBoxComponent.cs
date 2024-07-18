@@ -1,16 +1,16 @@
-using ARPG.Enemies;
 using ARPG.Shared;
 using Godot;
-using System.Threading.Tasks;
 
-public partial class HurtBoxComponent : Area2D
+public partial class HitBoxComponent : Area2D
 {
 	[Export]
-	public CollisionShape2D? HurtBoxShape;
+	public CollisionShape2D HitBoxShape { get; set; } = null!;
 	[Export]
-	public AnimationPlayer? HurtEffectPlayer;
+	public AnimationPlayer? HurtEffectPlayer { get; set; }
 	[Export]
-	public Timer? HurtTimer;
+	public Timer? HurtTimer { get; set; }
+	[Export]
+	public bool IsEnemyNode { get; set; } = false;
 
 	[Signal]
 	public delegate void HurtByEnemySignalEventHandler();
@@ -26,7 +26,7 @@ public partial class HurtBoxComponent : Area2D
 			HurtTimer.Timeout += ResetHurtState;
 		}
 
-		if(HurtEffectPlayer is not null)
+		if (HurtEffectPlayer is not null)
 		{
 			HurtEffectPlayer.Play(EffectType.RESET.Value);
 		}
@@ -35,15 +35,22 @@ public partial class HurtBoxComponent : Area2D
 	public override void _PhysicsProcess(double delta)
 	{
 
-		if (HurtBoxShape is null) return;
+		if (HitBoxShape is null) return;
 		if (IsHurt is false)
 		{
 			foreach (var collisionArea in this.GetOverlappingAreas())
 			{
-				if (collisionArea.Name == EnemyConsts.HitBoxName)
+				if (IsEnemyNode is false)
+				{
+					if (collisionArea is EnemyHurtBoxComponent)
+					{
+						EmitSignal(nameof(HurtByEnemySignal));
+						HurtByEnemy(collisionArea);
+					}
+				}
+				else if (collisionArea is WeaponBase)
 				{
 					EmitSignal(nameof(HurtByEnemySignal));
-					HurtByEnemy(collisionArea);
 				}
 			}
 		}

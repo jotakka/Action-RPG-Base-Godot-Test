@@ -26,8 +26,8 @@ public sealed class PlayerHurtState : PlayerStateBase
 
     private void KnockBack()
     {
-        _player.HurtBoxComponent?.HurtAnimation();
-        var enemyHitVelocity = _player.HurtBoxComponent?.EnemyHitVelocity ?? Vector2.Zero;
+        _player.HitBoxComponent?.HurtAnimation();
+        var enemyHitVelocity = _player.HitBoxComponent?.EnemyHitVelocity ?? Vector2.Zero;
         _player.Velocity = (enemyHitVelocity - _player.Velocity) * _player.KnockBackFactor;
         _player.HealthComponent?.TakeDamage();
         _player.MoveAndCollide(_player.Velocity);

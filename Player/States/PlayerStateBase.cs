@@ -19,11 +19,9 @@ public abstract class PlayerStateBase : IState
 
     public virtual void Enter()
     {
-        GD.PrintS($"State entered: {this.GetType().Name}");
     }
     public virtual void Exit()
     {
-        GD.PrintS($"State exited: {this.GetType().Name}");
     }
 
     public virtual void Update(double delta)

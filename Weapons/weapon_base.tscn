@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" path="res://Weapons/WeaponBase.cs" id="1_4tvmg"]
 
-[node name="WeaponBase" type="Area2D"]
+[node name="WeaponBase" type="Area2D" node_paths=PackedStringArray("Sprite2D", "CollisionShape")]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_4tvmg")
+Sprite2D = NodePath("Sprite2D")
+CollisionShape = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 

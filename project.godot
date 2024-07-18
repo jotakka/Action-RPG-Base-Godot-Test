@@ -76,6 +76,9 @@ ui_attack={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemy"
+2d_physics/layer_3="HitBox"
+2d_physics/layer_4="HurtBox"
+2d_physics/layer_5="Collectables"
 
 [rendering]
 

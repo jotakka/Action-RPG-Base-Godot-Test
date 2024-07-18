@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv4ocnm5pgfae"]
+
+[ext_resource type="Script" path="res://Components/EnemyHurtBoxComponent.cs" id="1_yllvh"]
+
+[node name="EnemyHurtBoxComponent" type="Area2D" node_paths=PackedStringArray("HurtBoxShape")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_yllvh")
+HurtBoxShape = NodePath("")

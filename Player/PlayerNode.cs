@@ -13,9 +13,9 @@ public partial class PlayerNode : CharacterBody2D
 	[Export]
 	public AttackComponent? AttackComponent { get; set; }
 	[Export]
-	public HurtBoxComponent? HurtBoxComponent { get; set; }
+	public HitBoxComponent? HitBoxComponent { get; set; }
 	[Export]
-	public WeaponComponent? WeaponComponent { get; set; }
+	public WeaponBase? Weapon { get; set; }
 	[Export]
 	public CollisionObject2D? CollisionBox { get; set; }
 	[Export]
@@ -35,15 +35,17 @@ public partial class PlayerNode : CharacterBody2D
 	{
 		StateMachine = new PlayerStateMachine(this);
 
-		if(HurtBoxComponent is not null)
+		if(HitBoxComponent is not null)
 		{
-			HurtBoxComponent.HurtByEnemySignal += OnHurt;
+			HitBoxComponent.HurtByEnemySignal += OnHurt;
 		}
 
 		if(CollectingComponent is not null)
 		{
 			CollectingComponent.ItemCollectedSignal += InventoryResource!.AddItem;
 		}
+
+		Weapon!.HideWeapon();
 	}
 
 	public override void _PhysicsProcess(double delta)

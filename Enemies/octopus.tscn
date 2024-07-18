@@ -1,7 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://dinwmbcvhl610"]
+[gd_scene load_steps=25 format=3 uid="uid://dinwmbcvhl610"]
 
 [ext_resource type="Script" path="res://Enemies/Octopus.cs" id="1_47w8w"]
 [ext_resource type="Texture2D" uid="uid://17dukmywl8xi" path="res://Enemies/Art/SpriteSheet.png" id="2_va3e7"]
+[ext_resource type="PackedScene" uid="uid://djjkrcnkuummg" path="res://Components/hit_box_component.tscn" id="3_x7yeg"]
+[ext_resource type="PackedScene" uid="uid://bv4ocnm5pgfae" path="res://Components/enemy_hurt_box_component.tscn" id="4_hjw7y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wdjx1"]
 atlas = ExtResource("2_va3e7")
@@ -141,15 +143,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nptet"]
 size = Vector2(14, 5)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6yfix"]
-radius = 7.0
-height = 14.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_5677q"]
+radius = 8.45702
 
-[node name="Octopus" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_c1yu5"]
+radius = 7.07107
+
+[node name="Octopus" type="CharacterBody2D" node_paths=PackedStringArray("HitBoxComponent")]
 z_index = 1
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_47w8w")
+HitBoxComponent = NodePath("HitBoxComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_37mpp")
@@ -159,8 +164,17 @@ animation = &"walk_down"
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_nptet")
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("HitBoxShape") instance=ExtResource("3_x7yeg")]
+HitBoxShape = NodePath("HitBox")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("CapsuleShape2D_6yfix")
-debug_color = Color(0.940375, 0.146619, 0.493363, 0.42)
+[node name="HitBox" type="CollisionShape2D" parent="HitBoxComponent"]
+scale = Vector2(1.06421, 0.960362)
+shape = SubResource("CircleShape2D_5677q")
+debug_color = Color(0.308219, 0.518721, 0.924363, 0.42)
+
+[node name="EnemyHurtBoxComponent" parent="." node_paths=PackedStringArray("HurtBoxShape") instance=ExtResource("4_hjw7y")]
+HurtBoxShape = NodePath("HurtBox")
+
+[node name="HurtBox" type="CollisionShape2D" parent="EnemyHurtBoxComponent"]
+shape = SubResource("CircleShape2D_c1yu5")
+debug_color = Color(0.848429, 0.274172, 0.648692, 0.42)
