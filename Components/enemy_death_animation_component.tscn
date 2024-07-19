@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://yvd10jhoadry"]
+
+[ext_resource type="Script" path="res://Components/EnemyDeathAnimationComponent.cs" id="1_vq661"]
+[ext_resource type="Texture2D" uid="uid://df5cgqvmspee1" path="res://Enemies/Art/smoke_effect.png" id="2_lffm5"]
+
+[node name="EnemyDeathAnimationComponent" type="Sprite2D"]
+visible = false
+texture = ExtResource("2_lffm5")
+hframes = 6
+script = ExtResource("1_vq661")

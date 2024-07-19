@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bl3ltcrn7kx0a"]
+[gd_scene load_steps=13 format=3 uid="uid://bl3ltcrn7kx0a"]
 
 [ext_resource type="Script" path="res://Enemies/EnemyBase.cs" id="1_1plr6"]
 [ext_resource type="Texture2D" uid="uid://bme36tuvssk2m" path="res://Enemies/Art/Slime4.png" id="1_3jpee"]
@@ -6,6 +6,52 @@
 [ext_resource type="PackedScene" uid="uid://djjkrcnkuummg" path="res://Components/hit_box_component.tscn" id="3_78xf1"]
 [ext_resource type="PackedScene" uid="uid://bv4ocnm5pgfae" path="res://Components/enemy_hurt_box_component.tscn" id="4_qsa56"]
 [ext_resource type="PackedScene" uid="uid://bu05vc7g05ubh" path="res://Components/walk_animation_component.tscn" id="6_uaxx2"]
+[ext_resource type="PackedScene" uid="uid://yvd10jhoadry" path="res://Components/enemy_death_animation_component.tscn" id="8_1plcj"]
+
+[sub_resource type="Animation" id="Animation_5lmjd"]
+resource_name = "death"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyDeathAnimationComponent:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyDeathAnimationComponent:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f2iqo"]
+_data = {
+"death": SubResource("Animation_5lmjd")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g8vpb"]
 resource_local_to_scene = true
@@ -20,7 +66,8 @@ height = 14.0
 resource_local_to_scene = true
 size = Vector2(16, 5)
 
-[node name="EnemyBase" type="CharacterBody2D" node_paths=PackedStringArray("HitBoxComponent", "HurtBoxComponent", "Sprite2D", "EnvCollisionShape", "AnimationPlayer", "WalkAnimationComponent")]
+[node name="EnemyBase" type="CharacterBody2D" node_paths=PackedStringArray("HitBoxComponent", "HurtBoxComponent", "Sprite2D", "EnvCollisionShape", "AnimationPlayer", "WalkAnimationComponent", "DeathAnimationComponent")]
+collision_layer = 2
 script = ExtResource("1_1plr6")
 HitBoxComponent = NodePath("HitBoxComponent")
 AnimationLibraryResource = ExtResource("2_6eexh")
@@ -29,6 +76,7 @@ Sprite2D = NodePath("Sprite2D")
 EnvCollisionShape = NodePath("EnvCollisionBox")
 AnimationPlayer = NodePath("AnimationPlayer")
 WalkAnimationComponent = NodePath("WalkAnimationComponent")
+DeathAnimationComponent = NodePath("EnemyDeathAnimationComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3jpee")
@@ -37,6 +85,9 @@ vframes = 4
 frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f2iqo")
+}
 
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("HitBoxShape") instance=ExtResource("3_78xf1")]
 HitBoxShape = NodePath("HitBoxShape")
@@ -58,4 +109,9 @@ position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_ky7fm")
 
 [node name="WalkAnimationComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("6_uaxx2")]
+AnimationPlayer = NodePath("../AnimationPlayer")
+
+[node name="EnemyDeathAnimationComponent" parent="." node_paths=PackedStringArray("EnemyMainSprite", "AnimationPlayer") instance=ExtResource("8_1plcj")]
+visible = true
+EnemyMainSprite = NodePath("../Sprite2D")
 AnimationPlayer = NodePath("../AnimationPlayer")

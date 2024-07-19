@@ -11,5 +11,13 @@ public partial class EnemyHurtBoxComponent : Area2D
 	public CollisionShape2D? HurtBoxShape;
 
 	public Vector2 EnemyHitVelocity { get; private set; } = Vector2.Zero;
+
+	public void Disable()
+	{
+		this.SetCollisionLayerValue(
+			(int)CollisionLayerNumber.HurtBox,
+			false
+		);
+	}
 }
 

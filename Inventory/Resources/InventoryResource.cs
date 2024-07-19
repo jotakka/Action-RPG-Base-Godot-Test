@@ -23,7 +23,6 @@ public partial class InventoryResource : Resource
 
 	public void AddItem(InventoryItemResource item)
 	{
-		GD.Print($"Item added: {item.Name}");
 		if (InventorySlots.ContainsKey(item.Name))
 		{
 			InventorySlots[item.Name].Amount++;
@@ -46,7 +45,6 @@ public partial class InventoryResource : Resource
 
 	public void RemovedItem(InventoryItemResource item)
 	{
-		GD.Print($"Item removed: {item.Name}");
 		if (InventorySlots.ContainsKey(item.Name))
 		{
 			InventorySlots[item.Name].Amount--;

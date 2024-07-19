@@ -31,7 +31,6 @@ public partial class InventoryGui : Control
 
 	public void OnUpdateInventoryItems()
 	{
-		GD.Print("Inventory updated signal received");
 		var i = 0;
 		foreach (var item in InventoryResource.InvetoryItems)
 		{
